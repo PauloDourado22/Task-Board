@@ -6,19 +6,145 @@ body {
 .board {
     display: flex;
     gap: 20px;
+    justify-content: center;
+    flex-wrap: wrap;
 }
 
 .column {
     flex: 1;
-    background: #f4f4f4;
-    padding: 10px;
+    min-width: 250px;
+    background-color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.column ul {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+.column ul li {
+    transition: all 0.2s ease;
+}
+
+.column h2 {
+    text-align: center;
+    margin-bottom: 15px;
+    color: #555;
 }
 
 li {
-    background: white;
+    background: #fafafa;
     margin-bottom: 10px;
-    padding: 8px;
+    padding: 10px;
+    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+    transition: all 0.3s ease;
+    opacity: 1;
+    transform: translateY(0);
+}
+
+li.fade-out {
+    opacity: 0;
+    transform: translateX(50px);
+    transition: all 0.15s ease;
+}
+
+li:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
+}
+
+li.completed {
+    text-decoration: line-through;
+    opacity: 0.6;
+}
+
+li button {
+    margin-left: 5px;
+    padding: 3px 7px;
+    border: none;
+    border-radius: 3px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+li button:hover {
+    transform: scale(1.1);
+}
+
+li button:first-child {
+    background-color: #e0e0e0; /* left arrow */
+}
+
+li button:first-child:hover {
+    background-color: #d0d0d0;
+}
+
+li button:nth-child(2) {
+    background-color: #d0f0d0; /* right arrow */
+}
+
+
+li button:last-child {
+    background-color: #f08080; /* delete */
+    color: white;
+}
+
+li button:last-child:hover {
+    background-color: #e06060;
+}
+
+
+#task-form {
+    display: flex;
+    gap: 10px;
+    margin: 0 auto 30px auto;
+    max-width: 600px;
+}
+
+#task-input {
+    flex: 1;
+    padding: 10px;
+    font-size: 16px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    outline: none;
+}
+
+#task-input:focus {
+    border-color: #4CAF50;
+}
+
+#task-form button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #4CAF50;
+    color: white;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background 0.2s;
+}
+
+#task-form button:hover {
+    background-color: #45a049;
+}
+
+@media (max-width: 800px) {
+    .board {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .column {
+        width: 90%;
+        margin-bottom: 20px;
+    }
 }
