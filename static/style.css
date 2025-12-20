@@ -101,9 +101,10 @@ li button:last-child:hover {
     background-color: #e06060;
 }
 
-
 #task-form {
+    position: relative;
     display: flex;
+    align-items: center;
     gap: 10px;
     margin: 0 auto 30px auto;
     max-width: 600px;
@@ -135,6 +136,83 @@ li button:last-child:hover {
 
 #task-form button:hover {
     background-color: #45a049;
+}
+
+.task-date {
+    font-size: 0.75rem;
+    opacity: 0.6;
+}
+
+#schedule-container {
+    position: absolute;
+    top: 50px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: #fff;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    padding: 16px;
+    box-shadow: 0 6px 16px rgba(0,0,0,0.2);
+    z-index: 100;
+    min-width: 280px;
+}
+
+.calendar-wrapper {
+    display: flex;
+    flex-direction: column;   /* stack calendar and button */
+    align-items: center;      /* center horizontally */
+    width: 100%;
+    box-sizing: border-box;
+}
+
+#task-datetime-calendar {
+    width: 100%;              /* calendar takes full width of wrapper */
+}
+
+.scheduled-button-wrapper {
+    width: 100%;
+    display: flex;
+    justify-content: center;  /* center the button */
+    margin-top: 8px;          /* spacing between calendar and button */
+}
+
+#add-task-scheduled {
+    padding: 8px 14px;
+    font-size: 1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+}
+
+.flatpickr-calendar.inline {
+    width: 100% !important;
+    box-sizing: border-box;
+}
+
+#schedule-container label {
+    font-size: 0.85rem;
+    color: #555;
+}
+
+#schedule-container input,
+#schedule-container button {
+    font-size: 0.9rem;
+    padding: 4px 8px;
+    border-radius: 4px;
+    border: 1px solid #ccc;
+}
+
+#task-datetime {
+    padding: 4px 8px;
+    font-size: 0.9rem;
+    border-radius: 4px;
+    border: 1px solid #ccc;
 }
 
 @media (max-width: 800px) {
