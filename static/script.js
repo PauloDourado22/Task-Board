@@ -24,14 +24,21 @@ function renderTasks() {
         const taskTextNode = document.createTextNode(task.text);
         li.appendChild(taskTextNode);
 
+        // Details container
+        const details = document.createElement("div");
+        details.className = "task-details hidden"
+
         // Only add date/time if task is scheduled
         if (task.scheduled) {
             const meta = document.createElement("small");
             meta.className = "task-date";
-            meta.textContent = new Date(task.dueAt).toLocaleString();
-            li.appendChild(document.createElement("br"));
-            li.appendChild(meta);
+            const date = new Date(task.dueAt);
+            meta.textContent = `Scheduled for: ${date.toLocaleString()}`;
+
+            details.appendChild(meta);
         }
+
+        li.appendChild(details);
 
         // Completed style
         if (task.status === "completed") li.classList.add("completed");
@@ -39,11 +46,30 @@ function renderTasks() {
         // Controls container
         const controls = document.createElement("div");
 
+        // Complete button (only for to Do tasks)
+        if (task.status === "todo") {
+            const complete = document.createElement("button");
+            complete.type = "button";
+            complete.innerHTML = '<i class="fa-solid fa-circle-check"></i>';
+            complete.classList.add("btn-complete");
+            complete.title = "Complete task";
+
+            complete.addEventListener("click", e => {
+                e.preventDefault();
+                e.stopPropagation();
+                completeTask(task.id);
+            });
+
+            controls.appendChild(complete);
+        }
+
         // Left button
         if (task.status !== "todo") {
             const left = document.createElement("button");
             left.type = "button";
             left.innerHTML = '<i class="fa-solid fa-circle-left"></i>';
+            left.classList.add("btn-move-left");
+            
             left.addEventListener("click", e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -57,6 +83,8 @@ function renderTasks() {
             const right = document.createElement("button");
             right.type = "button";
             right.innerHTML = '<i class="fa-solid fa-circle-right"></i>';
+            right.classList.add("btn-move-right");
+            
             right.addEventListener("click", e => {
                 e.preventDefault();
                 e.stopPropagation();
@@ -69,12 +97,28 @@ function renderTasks() {
         const del = document.createElement("button");
         del.type = "button";
         del.innerHTML = '<i class="fa-regular fa-trash-can"></i>';
+        del.classList.add("btn-delete");
+        
         del.addEventListener("click", e => {
             e.preventDefault();
             e.stopPropagation();
             deleteTask(task.id);
         });
         controls.appendChild(del);
+
+        // Expand button
+        const expand = document.createElement("button");
+        expand.type = "button";
+        expand.innerHTML = '<i class="fa-solid fa-plus"></i>';
+        expand.classList.add("btn-expand");
+
+        expand.addEventListener("click", e => {
+            e.stopPropagation();
+            details.classList.toggle("hidden");
+            details.classList.toggle("open");
+        });
+
+        controls.appendChild(expand);
 
         li.appendChild(controls);
 
@@ -164,7 +208,16 @@ function moveTask(id, direction) {
     }
 }
 
-/* ---Delete Task--- */
+/* --- Complete Task --- */
+function completeTask(id) {
+    const task = tasks.find(t => t.id === id);
+    if (!task) return;
+
+    task.status = "completed";
+    renderTasks();
+} 
+
+/* --- Delete Task --- */
 function deleteTask(id) {
     const index = tasks.findIndex(t => t.id === id);
     if (index !== -1) {
