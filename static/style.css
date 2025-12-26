@@ -1,8 +1,196 @@
+/* --- Base Styles --- */
 body {
     font-family: sans-serif;
     padding: 20px;
 }
 
+/* --- Landing Page --- */
+.landing-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  text-align: center;
+  background-color: #121212; /* dark mode */
+  color: #e0e0e0;
+}
+
+.landing-buttons .btn {
+  padding: 10px 20px;
+  margin: 10px;
+  background-color: #4CAF50;
+  color: white;
+  text-decoration: none;
+  border-radius: 6px;
+  transition: background 0.2s;
+}
+
+.landing-buttons .btn:hover {
+  background-color: #45a049;
+}
+
+.landing-buttons .btn-outline {
+  background: transparent;
+  border: 2px solid #4CAF50;
+  color: #4CAF50;
+}
+
+.landing-buttons .btn-outline:hover {
+  background-color: #4CAF50;
+  color: white;
+}
+
+
+/* --- Dark Mode Body and Lists --- */
+body.dark {
+    background-color: #121212;
+    color: #e0e0e0;
+}
+
+body.dark .column {
+    background-color: #121212;
+    border: 1px solid #333;
+}
+
+body.dark li {
+    background-color: #2a2a2a;
+    box-shadow: none;
+    border: 1px solid #333;
+}
+
+/* Dark Mode Toggle Button */
+body.dark #toggle-theme {
+    border-color: #444;
+}
+
+body.dark #toggle-theme:hover {
+    background: rgba(255,255,255,0.08);
+}
+
+/* --- Add Task Buttons in Dark Mode --- */
+body.dark #task-form #add-task-now {
+    background-color: #4CAF50;
+    color: white;
+}
+
+body.dark #task-form #add-task-now:hover {
+    background-color: #45a049; /* darker green */
+}
+
+body.dark #task-form #add-task-scheduled {
+    background-color: #4CAF50; /* base green for scheduled task */
+    color: white;
+}
+
+body.dark #task-form #add-task-scheduled:hover {
+    background-color: #45a049; /* darker green on hover */
+    color: white;
+}
+
+body.dark #task-form #show-schedule {
+    background-color: #4CAF50;
+    color: white;
+}
+
+body.dark #task-form #show-schedule:hover {
+    background-color: #45a049;
+    color: white;
+}
+
+body.dark .btn-expand {
+    color: #ccc; /* light gray */
+}
+
+body.dark .btn-expand:hover {
+    color: #eee; /* slightly brighter on hover */
+}
+
+body.dark h1,
+body.dark .column h2 {
+    color: #e0e0e0;
+}
+
+body.dark li:hover {
+    border-color: white;
+}
+
+/* Dark mode calendar container */
+body.dark #schedule-container {
+    background-color: #1e1e1e; /* dark background */
+    border: 1px solid #444;
+    color: #e0e0e0;
+}
+
+/* Dark mode for Flatpickr */
+body.dark .flatpickr-calendar {
+    background-color: #2a2a2a;
+    border: 1px solid #444;
+    color: #ffffff;
+}
+
+body.dark .flatpickr-current-month {
+    color: #ffffff;
+}
+
+body.dark .flatpickr-weekdays {
+    color: #ffffff;
+    background-color: #2a2a2a;
+}
+
+body.dark .flatpickr-day {
+    color: #ffffff;
+    background: #2a2a2a;
+}
+
+body.dark .flatpickr-day:hover {
+    background: #45a049; /* optional hover color for days */
+    color: #fff;
+}
+
+body.dark .flatpickr-prev-month,
+body.dark .flatpickr-next-month {
+    color: #ffffff;
+}
+
+body.dark .flatpickr-weekdays span {
+    color: #ffffff !important;
+}
+
+body.dark .flatpickr-time {
+    background-color: #2a2a2a;
+}
+
+body.dark .flatpickr-time input,
+body.dark .flatpickr-time span {
+    color: #ffffff !important;
+}
+
+/* --- Header --- */
+.header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    max-width: 900px;
+    margin: 0 auto 20px auto;
+}
+
+#toggle-theme {
+    background: transparent;
+    border: 1px solid #ccc;
+    color: inherit;
+    padding: 8px 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+#toggle-theme:hover {
+    background: rgba(0,0,0,0.05);
+    transform: scale(1.05);
+}
+
+/* --- Board and Columns --- */
 .board {
     display: flex;
     gap: 20px;
@@ -39,6 +227,7 @@ body {
     color: #555;
 }
 
+/* --- Task Items --- */
 li {
     background: #fafafa;
     margin-bottom: 10px;
@@ -91,6 +280,7 @@ li button:hover {
     transform: scale(1.1);
 }
 
+/* --- Task Form --- */
 #task-form {
     position: relative;
     display: flex;
@@ -107,6 +297,10 @@ li button:hover {
     border-radius: 5px;
     border: 1px solid #ccc;
     outline: none;
+}
+
+#task-input::placeholder {
+    text-align: center;
 }
 
 #task-input:focus {
@@ -128,11 +322,26 @@ li button:hover {
     background-color: #45a049;
 }
 
-.task-date {
-    font-size: 0.75rem;
-    opacity: 0.6;
+/* --- Specific Add Task Buttons --- */
+#add-task-now {
+    background-color: #4CAF50;
+    color: white;
 }
 
+#add-task-now:hover {
+    background-color: #45a049;
+}
+
+#add-task-scheduled {
+    background-color: #2196F3;
+    color: white;
+}
+
+#add-task-scheduled:hover {
+    background-color: #1976D2;
+}
+
+/* --- Schedule Container --- */
 #schedule-container {
     position: absolute;
     top: 50px;
@@ -205,6 +414,7 @@ li button:hover {
     border: 1px solid #ccc;
 }
 
+/* --- Task Buttons --- */
 .btn-complete {
     background-color: #4CAF50;
     color: white;
@@ -270,6 +480,7 @@ li button:hover {
     display: none;
 }
 
+/* --- Responsive --- */
 @media (max-width: 800px) {
     .board {
         flex-direction: column;

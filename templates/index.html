@@ -5,43 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Board</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="{{ url_for('static', filename='script.js') }}"></script>
 </head>
 <body>
-    <h1>Task Board</h1>
-
-    <form id="task-form">
-        <input type="text" id="task-input" placeholder="New task" required>
-        <div id="schedule-container" style="display: none;">
-            <div class="calendar-wrapper">
-                <div id="task-datetime-calendar"></div> <!-- Flatpickr calendar -->
-                <div class="scheduled-button-wrapper">
-                    <button type="button" id="add-task-scheduled">
-                        <i class="fa-solid fa-calendar-plus"></i> Add Scheduled Task
-                    </button>
-                </div>
-            </div>
-        </div>
-        <button type="submit" id="add-task-now"><i class="fa-solid fa-square-plus"></i></button> 
-        <button type="button" id="show-schedule"><i class="fa-solid fa-calendar"></i></button>
-    </form>
-
-    <div class="board">
-        <div class="column" data-status="todo">
-            <h2>To Do</h2>
-            <ul></ul>
-        </div>
-        <div class="column" data-status="in-progress">
-            <h2>In Progress</h2>
-            <ul></ul>
-        </div>
-        <div class="column" data-status="completed">
-            <h2>Completed</h2>
-            <ul></ul>
-        </div>
+  <div class="landing-container">
+    <h1>Welcome to Task Board</h1>
+    <p>Manage your tasks efficiently and stay organized.</p>
+    <div class="landing-buttons">
+      <a href="{{ url_for('signup') }}" class="btn">Sign Up</a>
+      <a href="{{ url_for('login') }}" class="btn btn-outline">Log in</a>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  </div>
 </body>
 </html>

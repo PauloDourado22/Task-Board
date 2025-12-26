@@ -109,7 +109,7 @@ function renderTasks() {
         // Expand button
         const expand = document.createElement("button");
         expand.type = "button";
-        expand.innerHTML = '<i class="fa-solid fa-plus"></i>';
+        expand.innerHTML = '<i class="fa-solid fa-ellipsis"></i>';
         expand.classList.add("btn-expand");
 
         expand.addEventListener("click", e => {
@@ -241,3 +241,27 @@ document.addEventListener("DOMContentLoaded", () => {
         }
     });
 });
+
+/* --- Toggle Dark Mode --- */
+const toggleBtn = document.getElementById("toggle-theme");
+if (toggleBtn) {
+    // Load saved theme
+    const savedTheme = localStorage.getItem("theme");
+    if (savedTheme === "dark") document.body.classList.add("dark");
+
+    updateThemeIcon(document.body.classList.contains("dark"));
+
+    toggleBtn.addEventListener("click", () => {
+        const isDark = document.body.classList.toggle("dark");
+        localStorage.setItem("theme", isDark ? "dark" : "light");
+        updateThemeIcon(isDark);
+    });
+}
+
+/* --- Update theme icon --- */
+function updateThemeIcon(isDark) {
+    const icon = document.querySelector("#toggle-theme i");
+    if (!icon) return;
+    icon.classList.toggle("fa-moon", !isDark);
+    icon.classList.toggle("fa-sun", isDark);
+}
