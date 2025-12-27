@@ -4,6 +4,11 @@ body {
     padding: 20px;
 }
 
+.header-logo {
+    text-decoration: none;
+    color: inherit;
+}
+
 /* --- Landing Page --- */
 .landing-container {
   display: flex;
@@ -478,6 +483,73 @@ li button:hover {
 
 .task-details.hidden {
     display: none;
+}
+
+/* --- Auth container --- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+}
+
+.auth-card {
+    background: #fff;
+    padding: 32px;
+    border-radius: 10px;
+    width: 100%;
+    max-width: 380px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+body.dark .auth-card {
+    background: #1e1e1e;
+    border: 1px solid #333;
+}
+
+.auth-card h2 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    margin-bottom: 16px;
+}
+
+.form-group input {
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+}
+
+.body.dark .form-group input{
+    background: #2a2a2a;
+    border-color: #444;
+    color: #0e0e0e;
+}
+
+.btn-primary {
+    width: 100%;
+    padding: 12px;
+    border-radius: 6px;
+    border: none;
+    background: #4CAF50;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.btn-primary:hover {
+    background: #45a049;
+}
+
+.auth-footer {
+    text-align: center;
+    margin-top: 16px;
+    font-size: 0.9rem;
 }
 
 /* --- Responsive --- */

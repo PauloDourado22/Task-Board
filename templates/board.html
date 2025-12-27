@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Board</title>
-    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
 </head>
 <body class="dark">
     <div class="header">
-        <h1>Task Board</h1>
+        <a href="{{ url_for('index') }}" class="header-logo">
+            <h1>Task Board</h1>
+        </a>
         <button id="toggle-theme" type="button">
             <i class="fa-solid fa-moon"></i>
         </button>
@@ -45,7 +47,8 @@
             <ul></ul>
         </div>
     </div>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/theme.js') }}"></script>
+    <script src="{{ url_for('static', filename='js/board.js') }}"></script>
     <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
 </body>
 </html>

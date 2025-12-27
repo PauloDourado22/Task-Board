@@ -1,12 +1,40 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sign up</title>
-    <script src="{{ url_for('static', filename='script.js') }}"></script>
-</head>
-<body>
-    
-</body>
-</html>
+{% extends "base_auth.html" %}
+
+{% block title %}Sign Up{% endblock %}
+
+{% block content %}
+<main class="auth-container">
+    <form class="auth-card" method="POST" action="{{ url_for('signup') }}">
+        <h2>Create account</h2>
+
+        <label>
+            Name
+            <input type="text" name="name" placeholder="Your name" required>
+        </label>
+
+        <label>
+            Email
+            <input type="email" name="email" placeholder="you@example.com" required>
+        </label>
+
+        <label>
+            Password
+            <input type="password" name="password" placeholder="••••••••" required>
+        </label>
+
+        <label>
+            Confirm password
+            <input type="password" name="confirm_password" placeholder="••••••••" required>
+        </label>
+
+        <button type="submit" class="primary-btn">
+            Sign up
+        </button>
+
+        <p class="auth-footer">
+            Already have an account?
+            <a href="{{ url_for('login') }}">Sign in</a>
+        </p>
+    </form>
+</main>
+{% endblock %}

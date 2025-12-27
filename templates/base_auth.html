@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}TaskBoard{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+    <!-- Auth styles -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/auth.css') }}">
+</head>
+<body>
+
+<header class="auth-header">
+    <h1>TaskBoard</h1>
+
+    <button id="toggle-theme" aria-label="Toggle theme">
+        <i class="fa-solid fa-moon"></i>
+    </button>
+</header>
+
+{% block content %}
+<!-- Page-specific content will go here -->
+{% endblock %}
+
+<script src="{{ url_for('static', filename='js/theme.js') }}" defer></script>
+</body>
+</html>
